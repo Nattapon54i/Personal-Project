@@ -35,16 +35,17 @@ export default class App extends React.Component {
         <Header className="header" style={{ background: "#13c2c2" }}>
           <img className="logo" src={logo} style={{ width: '100px' }} />
           <NavbarMenu handdleMenu={this.handdleMenu} menuKey={this.state.currentMenu} />
+
         </Header>
         <Layout>
           <Sider width={256} style={{ background: '#fff' }}>
             <LeftbarMenu handdleMenu={this.handdleMenu} menuKey={this.state.currentMenu} />
           </Sider>
-          <Layout style={{ padding: '0 24px 24px', background: '#B9EEFF' }}>
+          <Layout style={{ padding: '0 24px 400px', background: '#B9EEFF' }}>
             <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>Home</Breadcrumb.Item>
-              <Breadcrumb.Item>List</Breadcrumb.Item>
-              <Breadcrumb.Item>App</Breadcrumb.Item>
+              <Breadcrumb.Item></Breadcrumb.Item>
+              <Breadcrumb.Item></Breadcrumb.Item>
+              <Breadcrumb.Item></Breadcrumb.Item>
             </Breadcrumb>
             <Content
               style={{
@@ -60,7 +61,7 @@ export default class App extends React.Component {
               <Route exact path="/profile" component={Profile} />
               <Route exact path="/order" component={Order} />
               <Route exact path="/wishlist" component={Wishlist} />
-              <Route exact path="/showpeoduct" component={Showproduct} />
+              <Route exact path="/showproduct" component={Showproduct} />
             </Content>
           </Layout>
         </Layout>

@@ -1,20 +1,22 @@
 import React, { Component } from 'react'
 import { Select } from 'antd';
 import Search from 'antd/lib/input/Search';
+import jsonp from 'fetch-jsonp';
+import querystring from 'querystring';
 
 const { Option } = Select;
 
 let timeout;
 let currentValue;
 
-(value, callback) = () => {
+function fetch(value, callback) {
   if (timeout) {
-    clearRimeout(timeout);
+    clearTimeout(timeout);
     timeout = null;
   }
   currentValue = value;
 
-  fake = () => {
+  function fake() {
     const str = querystring.encode({
       code: 'utf-8',
       q: value,

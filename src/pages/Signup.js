@@ -31,11 +31,6 @@ class Signup extends Component {
     })
   }
 
-  // handleDirtyBlur = e => {
-  //   const { value } = e.target
-  //   this.setState({ isDirty: this.state.isDirty || !!value })
-  // }
-
   compareToFirstPassword = (rule, value, callback) => {
     const { form } = this.props
     if (value && value !== form.getFieldValue('password')) {
@@ -71,30 +66,6 @@ class Signup extends Component {
       this.openSignupFailedNotification()
     }
   }
-
-
-  // submitForm = (e) => {
-  //   e.preventDefault();
-  //   this.props.form.validateFieldsAndScroll((err, value) => {
-  //     if (!err) {
-  //       Axios.post('/registerUser', {
-  //         username: value.email,
-  //         password: value.password,
-  //         name: value.name
-  //       })
-  //         .then(result => {
-  //           console.log('result', result)
-  //           this.props.history.push('/')
-  //           this.openSignupSuccessNotification()
-  //         })
-  //         .carch(err => {
-  //           console.error(err)
-  //           this.openSignupFailedNotification()
-  //         })
-  //       this.props.form.resetFields()
-  //     }
-  //   })
-  // }
 
   render() {
     const { form } = this.props;
