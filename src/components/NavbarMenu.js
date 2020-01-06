@@ -11,31 +11,24 @@ export default class NavbarMenu extends Component {
       <Menu
         selectedKeys={[localStorage.getItem('currentMenu')]}
         mode="horizontal"
-        theme="dark"
+        theme="light"
         onClick={this.handleClick}
       >
+        <Menu.Item key="home" >
+          <a href="/home">
+            <span>Home</span>
+          </a>
+        </Menu.Item>
         <Menu.Item key="login">
-          <a href="/">
-            <Icon type="pie-chart" />
+          <a href="/login">
+            <Icon type="login" />
             <span>Login</span>
           </a>
         </Menu.Item>
         <Menu.Item key="signup">
           <a href="/signup">
-            <Icon type="desktop" />
+            <Icon type="plus-circle" />
             <span>Signup</span>
-          </a>
-        </Menu.Item>
-        <Menu.Item key="password">
-          <a href="/changepassword">
-            <Icon type="inbox" />
-            <span>Change Password</span>
-          </a>
-        </Menu.Item>
-        <Menu.Item key="profile">
-          <a href="/profile">
-            <Icon type="inbox" />
-            <span>Profile</span>
           </a>
         </Menu.Item>
       </Menu>
