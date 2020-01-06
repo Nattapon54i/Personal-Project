@@ -32,10 +32,9 @@ export default class App extends React.Component {
   render() {
     return (
       <Layout>
-        <Header className="header" style={{ background: "#13c2c2" }}>
-          <img className="logo" src={logo} style={{ width: '100px' }} />
+        <Header className="header" style={{ background: "#13c2c2", display: "flex", justifyContent: "flex-start" }}>
+          <img className="logo" src={logo} style={{ width: "100px", height: "50px", display:"flex", alignItems:"center"  }} />
           <NavbarMenu handdleMenu={this.handdleMenu} menuKey={this.state.currentMenu} />
-
         </Header>
         <Layout>
           <Sider width={256} style={{ background: '#fff' }}>
