@@ -21,18 +21,19 @@ export default class LeftbarMenu extends Component {
           }}
         >
           <Menu.Item key="myprofile" >
-            <a href="/profile">
+          <a href="/profile">
               <span>My Profile</span>
             </a>
+          </Menu.Item>
+          <Menu.Item key="showallproduct">
+            <a href="/showallproduct">
+              <span>Show Product</span>
+            </a>
+
           </Menu.Item>
           <Menu.Item key="myorder">
             <a href="/myorder">
               <span>My Order</span>
-            </a>
-          </Menu.Item>
-          <Menu.Item key="mywishlist">
-            <a href="/mywishlist">
-              <span>My Wishlist</span>
             </a>
           </Menu.Item>
         </Menu>

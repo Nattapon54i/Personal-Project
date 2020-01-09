@@ -1,14 +1,40 @@
 import React, { Component } from 'react'
 import { Row, Col, Input, Button, Form, notification, Icon } from 'antd'
 import logo from '../image/logoChokChai.png'
+import jwtDecode from "jwt-decode";
 import Axios from '../config/axios.setup'
 import { withRouter } from 'react-router-dom'
+
 
 class Login extends Component {
   state = {
     email: '',
-    password: ''
-  }
+    password: '',
+    isAdmin: false,
+    userId: '',
+  };
+
+  // componentDidMount = () => {
+  //   let token = localStorage.getItem("ACCESS_TOKEN");
+  //   console.log("token", token);
+  //   if (token) {
+  //     let userInfo = jwtDecode(token);
+  //     console.log(userInfo);
+  //     this.setState({
+  //       isAdmin: userInfo.role === "admin" ? true : false,
+  //       userId: userInfo.id
+  //     });
+  //   }
+
+  //   Axios.post("/loginUser")
+  //     .then(result => {
+  //       localStorage.setItem("ACCESS_TOKEN",result.data.token)
+  //       console.log(result.data)
+  //     })
+  //     .catch(err => {
+  //       console.error(err);
+  //     });
+  // };
 
   openLoginSuccessNotification = () => {
     notification.open({
@@ -28,6 +54,7 @@ class Login extends Component {
     })
   }
 
+
   handleLogin = async (e) => {
     e.preventDefault()
     this.props.form.validateFieldsAndScroll();
@@ -37,13 +64,36 @@ class Login extends Component {
         password: this.state.password
       })
       console.log('result', result)
-      this.props.history.push('/')
+      localStorage.setItem("ACCESS_TOKEN", result.data.token);
+      this.props.history.push("/profile");
       this.openLoginSuccessNotification()
     } catch (err) {
       console.error(err.response.data)
       this.openLoginFailedNotification()
     }
   }
+
+  handleLogOut = e => {
+    e.preventDefault();
+    localStorage.removeItem("ACCESS_TOKEN");
+    // console.log("islogin", this.state.isLogin);
+    this.setState({ isLogin: false });
+  };
+
+  checkOnline = () => {
+    let token = localStorage.getItem("ACCESS_TOKEN");
+    if (token) {
+      Axios.post("/isTokenExpired", {})
+        .then(result => {
+          console.log(result.data);
+          // this.props.history.push("/home");
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    }
+  };
+
 
   render() {
     const { form } = this.props

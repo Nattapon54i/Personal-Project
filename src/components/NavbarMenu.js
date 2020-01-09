@@ -1,7 +1,16 @@
 import React, { Component } from 'react'
 import { Menu, Icon } from 'antd';
+import jwtDecode from "jwt-decode";
 
 export default class NavbarMenu extends Component {
+  state = {
+    isLogin: false,
+    modalVisible: false,
+    username: "",
+    password: ""
+  };
+
+
   handleClick = (e) => {
     localStorage.setItem('currentMenu', e.key)
   }

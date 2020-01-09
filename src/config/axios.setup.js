@@ -1,5 +1,8 @@
 import Axios from 'axios';
 
+Axios.defaults.baseURL = "http://localhost:8080"
+
+
 const UNPROTECT_PATHS = [
   'loginUser',
   'registerUser'
@@ -28,6 +31,29 @@ Axios.interceptors.request.use(
     throw error;
   }
 )
+
+Axios.interceptors.response.use(
+  async config => {
+    return config;
+  },
+  async error => {
+    if (error.request === undefined) throw error;
+
+    let url = error.request.responseURL;
+    if (error.request.status === 401 && isUnProtectedPath(url)) {
+      throw error;
+    }
+
+    if (error.request.status === 401) {
+      localStorage.removeItem("ACCESS_TOKEN")
+      console.log("Session expire, redirect to login");
+      alert("Session expire, redirect to login");
+      window.location.href = "/home"
+    }
+
+    throw error;
+  },
+);
 
 Axios.defaults.baseURL = "http://localhost:8080"
 

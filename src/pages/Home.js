@@ -1,27 +1,24 @@
 import React, { Component } from 'react'
-import { Row, Col, Button, Upload } from 'antd'
-import banner from '../image/Banner.jpg'
-import Showproduct from '../pages/Showproduct'
-import Axios from '../config/axios.setup'
+import { Row, Col, Button, Upload, Carousel } from 'antd'
 
 export default class Home extends Component {
-
-
-  handleHome = () => {
-    let payload = new FormData()
-    payload.append('photosHome', this.state.fileList[0])
-    Axios.post('/create-uploadPic', payload)
-  }
-
-
   render() {
     return (
-      <Row type="flex" justify="center"  >
-        <Col >
-          <Upload />
-
+      <Row className="row-home"  >
+        <Col style={{  }}>
+          <Carousel autoplay>
+            <div className="slide-pic" >
+              <img src="https://uppicimg.com/file/XZeJhWrH.jpg" />
+            </div>
+            <div className="slide-pic">
+              <img src="https://uppicimg.com/file/2h6wpA8G.jpg" />
+            </div>
+            <div className="slide-pic">
+              <img src="https://uppicimg.com/file/KJY8W3hA.jpg" />
+            </div>
+          </Carousel>
         </Col>
-      </Row>
+      </Row >
     )
   }
 }
